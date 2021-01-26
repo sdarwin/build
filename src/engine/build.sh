@@ -463,6 +463,7 @@ option.cpp \
 output.cpp \
 parse.cpp \
 pathsys.cpp \
+pathnt.cpp \
 pathunix.cpp \
 regexp.cpp \
 rules.cpp \
