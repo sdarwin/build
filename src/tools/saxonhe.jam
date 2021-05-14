@@ -18,8 +18,20 @@ rule init ( saxonhe_jar ? : java_exe ? )
     }
     else
     {
+    if [ os.on-windows ]
+    {
+        .saxonhe_jar = "/usr/share/java/Saxon-HE.jar" ;
+    }
+    else if [ os.name ] in MACOSX
+    {
+        local jar = [ GLOB "/Library/Java/Extensions/" "/usr/share/java/saxon/" "/usr/share/java/" : Saxon-HE.jar ] ;
+        .saxonhe_jar = $(jar[1]) ;
+    }
+    else
+    {
         local jar = [ GLOB "/usr/share/java/saxon/" "/usr/share/java/" : Saxon-HE.jar ] ;
         .saxonhe_jar = $(jar[1]) ;
+    }
     }
 }
 
